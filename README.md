@@ -20,7 +20,7 @@ MOBNews é um aplicativo de notícias desenvolvido para fins de estudos. O objet
 Para executar o projeto, siga estas etapas:
 
 1. Clone este repositório para o seu ambiente de desenvolvimento:
-git clone https://github.com/seu-usuario/mobnews.git
+git clone https://github.com/kaioLimaX/MobNews.git
 
 2. Abra o projeto no Android Studio.
 
@@ -30,20 +30,8 @@ git clone https://github.com/seu-usuario/mobnews.git
 
 ## Contribuição
 
-Contribuições são bem-vindas! Se você deseja colaborar com este projeto, siga estas etapas:
+Contribuições são bem-vindas! Se você deseja colaborar com este projeto, Basta fazer um Fork & pull.
 
-1. Fork este repositório.
-
-2. Crie uma nova branch para suas alterações:
-git checkout -b feature/sua-feature
-
-3. Faça as alterações desejadas e adicione os commits:
-git commit -am 'Adicione uma nova feature'
-
-4. Envie suas alterações para o repositório remoto:
-git push origin feature/sua-feature
-
-5. Abra uma pull request para revisão das alterações.
 
 ## Licença
 
