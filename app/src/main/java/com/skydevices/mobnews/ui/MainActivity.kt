@@ -5,7 +5,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.skydevices.mobnews.R
@@ -49,11 +48,7 @@ class MainActivity : AbstractActivity(), ViewHome.View {
         with(binding.rvNews) {
             adapter = mainAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
-            addItemDecoration(
-                DividerItemDecoration(
-                    this@MainActivity, DividerItemDecoration.VERTICAL
-                )
-            )
+
         }
     }
 

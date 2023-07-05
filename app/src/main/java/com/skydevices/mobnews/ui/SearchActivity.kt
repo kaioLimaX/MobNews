@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.skydevices.mobnews.adapter.MainAdapter
@@ -70,11 +69,7 @@ class SearchActivity : AbstractActivity(), ViewHome.View {
         with(binding.rvSearch) {
             adapter = mainAdapter
             layoutManager = LinearLayoutManager(this@SearchActivity)
-            addItemDecoration(
-                DividerItemDecoration(
-                    this@SearchActivity, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
-                )
-            )
+
         }
     }
 

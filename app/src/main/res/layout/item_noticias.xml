@@ -3,9 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:background="@drawable/border_card">
 
-    <ImageView
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardIvArticle"
+        android:layout_width="170dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivArticleImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+    </androidx.cardview.widget.CardView>
+
+    <!--<ImageView
 
         android:id="@+id/ivArticleImage"
         android:layout_width="170dp"
@@ -15,7 +39,8 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        android:roundCornerRadius="10dp"
+        tools:src="@tools:sample/backgrounds/scenic" />-->
 
     <TextView
         android:id="@+id/tvTitle"
@@ -31,8 +56,8 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivArticleImage"
-        app:layout_constraintTop_toTopOf="@id/ivArticleImage" />
+        app:layout_constraintStart_toEndOf="@id/cardIvArticle"
+        app:layout_constraintTop_toTopOf="@id/cardIvArticle" />
 
     <TextView
         android:id="@+id/tvDescription"
@@ -43,7 +68,7 @@
         android:maxLines="4"
         android:text="@string/description"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/ivArticleImage"
+        app:layout_constraintBottom_toBottomOf="@id/cardIvArticle"
         app:layout_constraintEnd_toEndOf="@id/tvTitle"
         app:layout_constraintStart_toStartOf="@id/tvTitle"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
@@ -55,10 +80,10 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/open_sans"
         android:text="@string/source"
-        android:textStyle="bold"
         android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@id/ivArticleImage"
-        app:layout_constraintTop_toBottomOf="@id/ivArticleImage" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/cardIvArticle"
+        app:layout_constraintTop_toBottomOf="@id/cardIvArticle" />
 
     <TextView
         android:id="@+id/tvPublishedAt"
@@ -70,8 +95,10 @@
         android:gravity="end"
         android:text="@string/published_at"
         android:textAlignment="textEnd"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/tvSorce"
         app:layout_constraintTop_toBottomOf="@id/tvSorce" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
