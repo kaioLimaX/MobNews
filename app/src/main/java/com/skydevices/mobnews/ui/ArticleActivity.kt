@@ -1,6 +1,5 @@
 package com.skydevices.mobnews.ui
 
-import android.app.Activity
 import android.util.Log
 import android.webkit.WebViewClient
 import androidx.viewbinding.ViewBinding
@@ -20,9 +19,12 @@ class ArticleActivity : AbstractActivity() {
 
 
     override fun onInject() {
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
-        supportActionBar?.setDisplayShowHomeEnabled(true);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         getArticle()
+        binding.webView.settings.javaScriptEnabled = true
+        binding.webView.settings.domStorageEnabled = true
+        binding.webView.settings.mediaPlaybackRequiresUserGesture = false
         binding.webView.apply {
 
             webViewClient = WebViewClient()
@@ -47,12 +49,13 @@ class ArticleActivity : AbstractActivity() {
         return true
     }
 
+
     override fun onBackPressed() {
         super.onBackPressed()
         finishWithFadeTransition()
     }
 
-    fun Activity.finishWithFadeTransition() {
+    private fun finishWithFadeTransition() {
         finish()
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
