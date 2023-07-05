@@ -1,12 +1,15 @@
 # MOBNews
 
-MOBNews é um aplicativo de notícias desenvolvido para fins de estudos. O objetivo do aplicativo é permitir que os usuários visualizem notícias, pesquisem por notícias específicas e marquem notícias como favoritas. O aplicativo utiliza as seguintes tecnologias:
+MOBNews é um aplicativo de notícias desenvolvido para fins de estudos. O objetivo do aplicativo é permitir que os usuários visualizem notícias, pesquisem por notícias específicas e marquem notícias como favoritas. 
+
+## Tecnologias Utilizadas
 
 - Kotlin: Linguagem de programação utilizada para desenvolver o aplicativo.
 - Retrofit: Biblioteca para realizar chamadas de API e consumir os dados de notícias.
 - Coroutines: Biblioteca para lidar com tarefas assíncronas e concorrência de forma mais fácil e segura.
 - Room: Biblioteca para persistência de dados local, utilizada para armazenar notícias favoritas offline.
 - Consumo de API: O aplicativo consome uma API de notícias para exibir os dados em tempo real.
+- - Arquitetura: MVP (Model-View-Presenter)
 
 ## Funcionalidades
 
@@ -30,7 +33,7 @@ git clone https://github.com/kaioLimaX/MobNews.git
 
 ## Contribuição
 
-Contribuições são bem-vindas! Se você deseja colaborar com este projeto, Basta fazer um Fork & pull.
+Contribuições são bem-vindas! Sinta-se à vontade para abrir um pull request ou reportar problemas.
 
 
 ## Licença
