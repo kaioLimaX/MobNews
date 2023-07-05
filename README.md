@@ -9,7 +9,7 @@ MOBNews é um aplicativo de notícias desenvolvido para fins de estudos. O objet
 - Coroutines: Biblioteca para lidar com tarefas assíncronas e concorrência de forma mais fácil e segura.
 - Room: Biblioteca para persistência de dados local, utilizada para armazenar notícias favoritas offline.
 - Consumo de API: O aplicativo consome uma API de notícias para exibir os dados em tempo real.
-- - Arquitetura: MVP (Model-View-Presenter)
+- Arquitetura: MVP (Model-View-Presenter)
 
 ## Funcionalidades
 
