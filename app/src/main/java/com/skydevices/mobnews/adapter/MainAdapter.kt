@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.skydevices.mobnews.R
 import com.skydevices.mobnews.databinding.ItemNoticiasBinding
 import com.skydevices.mobnews.model.Article
+import com.skydevices.mobnews.util.UtilDateTime
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.ArticleViewHolder>() {
     inner class ArticleViewHolder(private val binding: ItemNoticiasBinding) :
@@ -24,7 +25,7 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ArticleViewHolder>() {
             binding.tvTitle.text = article.author ?: article.source?.name
             binding.tvSorce.text = article.source?.name ?: article.author
             binding.tvDescription.text = article.description ?: "Description is empty"
-            binding.tvPublishedAt.text = article.publishedAt
+            binding.tvPublishedAt.text = article.publishedAt?.let { UtilDateTime.formatDateTime(it) }
 
             itemView.setOnClickListener {
                 onItemClickListener?.let { click ->
