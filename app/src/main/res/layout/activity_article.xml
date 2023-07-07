@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/black"
+        app:borderWidth="0dp"
+        android:backgroundTint="@color/primaryColor"
         android:contentDescription="@string/favoritebutton"
 
         android:src="@drawable/ic_favorite"

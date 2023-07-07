@@ -11,4 +11,5 @@
     <string name="article_delete_successful">Artigo deletado com sucesso</string>
     <string name="undo">desfazer</string>
     <string name="favoritebutton">FavoriteButton</string>
+    <string name="group_menu">Group</string>
 </resources>

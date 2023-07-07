@@ -1,6 +1,5 @@
 package com.skydevices.mobnews.ui
 
-import android.app.Activity
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
@@ -12,6 +11,7 @@ import com.skydevices.mobnews.model.Article
 import com.skydevices.mobnews.model.data.NewsDataSource
 import com.skydevices.mobnews.presenter.ViewHome
 import com.skydevices.mobnews.presenter.search.SearchPresenter
+import com.skydevices.mobnews.util.Constants
 import com.skydevices.mobnews.util.UtilQueryTextListiner
 
 class SearchActivity : AbstractActivity(), ViewHome.View {
@@ -102,19 +102,13 @@ class SearchActivity : AbstractActivity(), ViewHome.View {
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
-        finishWithFadeTransition()
+        Constants.finishWithFadeTransition(this)
         return true
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finishWithFadeTransition()
+        Constants.finishWithFadeTransition(this)
     }
-
-    private fun Activity.finishWithFadeTransition() {
-        finish()
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-    }
-
 
 }

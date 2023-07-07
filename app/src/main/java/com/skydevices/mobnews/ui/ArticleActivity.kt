@@ -31,7 +31,7 @@ class ArticleActivity : AbstractActivity() {
         val dataSource = NewsDataSource(this)
         presenter = FavoritePresenter(dataSource)
 
-        binding.webView.settings.javaScriptEnabled = false
+        binding.webView.settings.javaScriptEnabled = true
         binding.webView.settings.domStorageEnabled = true
         binding.webView.settings.mediaPlaybackRequiresUserGesture = false
         binding.webView.apply {
@@ -68,6 +68,7 @@ class ArticleActivity : AbstractActivity() {
     }
 
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
         finishWithFadeTransition()
