@@ -3,12 +3,18 @@ package com.skydevices.mobnews.ui
 import android.util.Log
 import android.webkit.WebViewClient
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.snackbar.Snackbar
+import com.skydevices.mobnews.R
 import com.skydevices.mobnews.databinding.ActivityArticleBinding
 import com.skydevices.mobnews.model.Article
+import com.skydevices.mobnews.model.data.NewsDataSource
+import com.skydevices.mobnews.presenter.favorite.FavoritePresenter
 
 class ArticleActivity : AbstractActivity() {
 
     private lateinit var article: Article
+
+    private lateinit var presenter: FavoritePresenter
 
     private lateinit var binding: ActivityArticleBinding
 
@@ -22,7 +28,10 @@ class ArticleActivity : AbstractActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         getArticle()
-        binding.webView.settings.javaScriptEnabled = true
+        val dataSource = NewsDataSource(this)
+        presenter = FavoritePresenter(dataSource)
+
+        binding.webView.settings.javaScriptEnabled = false
         binding.webView.settings.domStorageEnabled = true
         binding.webView.settings.mediaPlaybackRequiresUserGesture = false
         binding.webView.apply {
@@ -33,6 +42,15 @@ class ArticleActivity : AbstractActivity() {
                 loadUrl(url)
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             }
+        }
+
+        binding.fab.setOnClickListener {
+            presenter.saveArticle(article)
+            Snackbar.make(
+                it,
+                R.string.article_saved_successful,
+                Snackbar.LENGTH_LONG
+            ).show()
         }
     }
 

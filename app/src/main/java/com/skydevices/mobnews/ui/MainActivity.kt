@@ -34,7 +34,7 @@ class MainActivity : AbstractActivity(), ViewHome.View {
     override fun onInject() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        val dataSource = NewsDataSource()
+        val dataSource = NewsDataSource(this)
         presenter = NewsPresenter(this, dataSource)
         presenter.requestAll()
         configRecycle()

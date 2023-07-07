@@ -34,7 +34,7 @@ class SearchActivity : AbstractActivity(), ViewHome.View {
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
         supportActionBar?.setDisplayShowHomeEnabled(true);
         binding = ActivitySearchBinding.inflate(layoutInflater)
-        val dataSource = NewsDataSource()
+        val dataSource = NewsDataSource(this)
         presenter = SearchPresenter(this, dataSource)
         configRecycle()
         search()
@@ -111,7 +111,7 @@ class SearchActivity : AbstractActivity(), ViewHome.View {
         finishWithFadeTransition()
     }
 
-    fun Activity.finishWithFadeTransition() {
+    private fun Activity.finishWithFadeTransition() {
         finish()
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
