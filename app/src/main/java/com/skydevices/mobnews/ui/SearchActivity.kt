@@ -30,7 +30,7 @@ class SearchActivity : AbstractActivity(), ViewHome.View {
     }
 
     override fun onInject() {
-        supportActionBar?.title = "Search News"
+        supportActionBar?.title = "Pesquisar"
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
         supportActionBar?.setDisplayShowHomeEnabled(true);
         binding = ActivitySearchBinding.inflate(layoutInflater)
@@ -98,6 +98,9 @@ class SearchActivity : AbstractActivity(), ViewHome.View {
     override fun showArticles(article: List<Article>) {
         mainAdapter.differ.submitList(article.toList())
 
+    }
+
+    override fun showTopArticles(article: List<Article>) {
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.skydevices.mobnews.R
 import com.skydevices.mobnews.adapter.MainAdapter
+import com.skydevices.mobnews.adapter.MainNewsAdapter
 import com.skydevices.mobnews.databinding.ActivityMainBinding
 import com.skydevices.mobnews.model.Article
 import com.skydevices.mobnews.model.data.NewsDataSource
@@ -23,7 +24,13 @@ class MainActivity : AbstractActivity(), ViewHome.View {
     private val mainAdapter by lazy {
         MainAdapter()
     }
+
+    private val mainNewsAdapter by lazy {
+        MainNewsAdapter()
+    }
     private lateinit var presenter: NewsPresenter
+
+    private lateinit var presenterTopNews: NewsPresenter
 
 
     override fun getLayout(): ViewBinding {
@@ -37,23 +44,46 @@ class MainActivity : AbstractActivity(), ViewHome.View {
         val dataSource = NewsDataSource(this)
         presenter = NewsPresenter(this, dataSource)
         presenter.requestAll()
+        presenterTopNews = NewsPresenter(this, dataSource)
+        presenterTopNews.requestTopAll()
         configRecycle()
         clickAdapter()
+        clickAdapterNews()
 
     }
 
     private fun configRecycle() {
 
         setContentView(binding.root)
+
         with(binding.rvNews) {
             adapter = mainAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
 
         }
+        with(binding.rvMainNews) {
+            adapter = mainNewsAdapter
+            layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL, false)
+
+        }
+
+
+
     }
+
+
 
     private fun clickAdapter() {
         mainAdapter.setOnclickListener { article ->
+            val intent = Intent(this, ArticleActivity::class.java)
+            intent.putExtra("article", article)
+            startActivity(intent)
+
+        }
+    }
+
+    private fun clickAdapterNews() {
+        mainNewsAdapter.setOnclickListener { article ->
             val intent = Intent(this, ArticleActivity::class.java)
             intent.putExtra("article", article)
             startActivity(intent)
@@ -75,6 +105,11 @@ class MainActivity : AbstractActivity(), ViewHome.View {
 
     override fun showArticles(article: List<Article>) {
         mainAdapter.differ.submitList(article.toList())
+
+    }
+
+    override fun showTopArticles(article: List<Article>) {
+        mainNewsAdapter.differ.submitList(article.toList())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

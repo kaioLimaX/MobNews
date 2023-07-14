@@ -1,6 +1,5 @@
 package com.skydevices.mobnews.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -8,15 +7,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.skydevices.mobnews.R
-import com.skydevices.mobnews.databinding.ItemNoticiasBinding
+import com.skydevices.mobnews.databinding.ItemFavoritosBinding
 import com.skydevices.mobnews.model.Article
 import com.skydevices.mobnews.util.UtilDateTime
 
-class MainAdapter : RecyclerView.Adapter<MainAdapter.ArticleViewHolder>() {
-    inner class ArticleViewHolder(private val binding: ItemNoticiasBinding) :
+class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.ArticleViewHolder>() {
+    inner class ArticleViewHolder(private val binding: ItemFavoritosBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article) {
-            Log.d("TesteELa",article.toString())
+            //   Log.d("TesteELa",article.toString())
             Glide.with(binding.root)
                 .load(article.urlToImage)
                 .placeholder(R.drawable.defaut_icon) // Imagem padrão exibida durante o carregamento
@@ -56,7 +55,7 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ArticleViewHolder>() {
     val differ = AsyncListDiffer(this, differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        val binding = ItemNoticiasBinding.inflate(
+        val binding = ItemFavoritosBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false

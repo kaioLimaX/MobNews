@@ -36,6 +36,26 @@ class NewsDataSource(context: Context) {
         }
     }
 
+    @DelicateCoroutinesApi
+    fun getTopBreakingNews(callback: NewsHome.Presenter) {
+        GlobalScope.launch(Dispatchers.Main) {
+            val response = RetrofitInstrance.api.searchNews("youtube")
+            if (response.isSuccessful) {
+                response.body()?.let { newsResponse ->
+                    Log.d("searchNews", "$newsResponse")
+
+                    callback.onTopSuccess(newsResponse)
+                }
+                callback.onComplete()
+
+            } else {
+                callback.onError(response.message())
+                callback.onComplete()
+
+            }
+        }
+    }
+
 
     @DelicateCoroutinesApi
     fun searchNew(term: String, callback: SearchHome.Presenter) {
@@ -65,20 +85,20 @@ class NewsDataSource(context: Context) {
         }
     }
 
-    fun getAllArticle(callback: FavoriteHome) {
+    fun getAllArticle(callback: FavoriteHome.Presenter) {
         var allArticle: List<Article>
         CoroutineScope(Dispatchers.IO).launch {
             allArticle = newsReposity.getAll()
 
             with(Dispatchers.Main) {
-                callback.showArticles(allArticle)
+                callback.onSuccess(allArticle)
             }
         }
     }
 
 
     fun deleteArticle(article: Article?) {
-        CoroutineScope(Dispatchers.Main).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             article?.let { articleSafe ->
                 newsReposity.delete(articleSafe)
 

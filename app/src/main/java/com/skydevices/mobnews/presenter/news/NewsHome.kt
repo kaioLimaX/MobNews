@@ -9,5 +9,7 @@ interface NewsHome {
         fun onSucess(newsResponse: NewsResponse)
         fun onError(message : String)
         fun onComplete()
+        fun requestTopAll()
+        fun onTopSuccess(newsResponse: NewsResponse)
     }
 }

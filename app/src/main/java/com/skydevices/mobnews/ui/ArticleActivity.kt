@@ -8,9 +8,11 @@ import com.skydevices.mobnews.R
 import com.skydevices.mobnews.databinding.ActivityArticleBinding
 import com.skydevices.mobnews.model.Article
 import com.skydevices.mobnews.model.data.NewsDataSource
+import com.skydevices.mobnews.presenter.ViewHome
 import com.skydevices.mobnews.presenter.favorite.FavoritePresenter
+import com.skydevices.mobnews.util.Constants.Companion.finishWithFadeTransition
 
-class ArticleActivity : AbstractActivity() {
+class ArticleActivity : AbstractActivity(), ViewHome.Favorite {
 
     private lateinit var article: Article
 
@@ -29,18 +31,18 @@ class ArticleActivity : AbstractActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         getArticle()
         val dataSource = NewsDataSource(this)
-        presenter = FavoritePresenter(dataSource)
+        presenter = FavoritePresenter(this,dataSource)
 
         binding.webView.settings.javaScriptEnabled = true
         binding.webView.settings.domStorageEnabled = true
         binding.webView.settings.mediaPlaybackRequiresUserGesture = false
         binding.webView.apply {
-
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             webViewClient = WebViewClient()
             article.url?.let { url ->
                 Log.d("teste", "URL: $url")
                 loadUrl(url)
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+
             }
         }
 
@@ -63,7 +65,7 @@ class ArticleActivity : AbstractActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
-        finishWithFadeTransition()
+        finishWithFadeTransition(this)
         return true
     }
 
@@ -71,12 +73,10 @@ class ArticleActivity : AbstractActivity() {
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
-        finishWithFadeTransition()
+        finishWithFadeTransition(this)
     }
 
-    private fun finishWithFadeTransition() {
-        finish()
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-    }
+    override fun showArticles(article: List<Article>) {}
+
 
 }

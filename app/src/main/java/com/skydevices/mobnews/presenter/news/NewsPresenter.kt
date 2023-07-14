@@ -14,8 +14,18 @@ class NewsPresenter(
         this.dataSource.getBreakingNews(this)
     }
 
+    override fun requestTopAll() {
+        this.view.showProgressBar()
+        this.dataSource.getTopBreakingNews(this)
+    }
+
     override fun onSucess(newsResponse: NewsResponse) {
         this.view.showArticles(newsResponse.articles)
+
+    }
+
+    override fun onTopSuccess(newsResponse: NewsResponse) {
+        this.view.showTopArticles(newsResponse.articles)
     }
 
     override fun onError(message: String) {

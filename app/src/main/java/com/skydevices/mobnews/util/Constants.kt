@@ -9,8 +9,8 @@ class Constants {
         const val SEARCH_NEW_DELAY = 500L
 
         fun finishWithFadeTransition(activity: Activity) {
-            activity.finish()
            activity. overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            activity.finish()
         }
 
     }
